@@ -1,0 +1,138 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-size: serif;
+}
+
+.container {
+    width: 100vw;
+}
+
+/*menu section*/
+.menu {
+    color: steelblue;
+    border-bottom: 1px solid #000;
+}
+
+.menu .wrapper ul {
+    list-style: none;
+}
+
+.menu .wrapper ul li{
+    display: inline-block;
+    margin: 1% 1%;
+}
+
+.menu .wrapper ul li a:link, .menu .wrapper ul li a:visited{
+    text-decoration: none;
+    color: steelblue;
+}
+
+.menu .wrapper ul li a:hover {
+    color: blue;
+}
+/*end of menu section*/
+
+/*footer section*/
+.footer {
+    background-color: steelblue;
+    color: white;
+}
+
+.footer .wrapper a:link,.footer .wrapper a:visited {
+    color: #fff;
+}
+/*end of footer section*/
+
+.container {
+    background-color: rgb(230, 230, 230);
+}
+
+.wrapper {
+    width: 80%;
+    padding: 2%;
+    margin: 0 auto;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.btn-secondary{
+    padding: 1% 6px;
+    background-color: rgb(84, 201, 84);
+    text-decoration: none;
+    color: #fff;
+    display: inline-block;
+}
+
+.btn-danger{
+    padding: 1% 6px;
+    background-color: #ff4757;
+    text-decoration: none;
+    color: #fff;
+    display: inline-block;
+}
+
+.btn-primary{
+    padding: 4px 6px;
+    background-color: steelblue;
+    text-decoration: none;
+    color: #fff;
+    display: inline-block;
+}
+
+.tbl-100{
+    width: 100%;
+    padding: 1%;
+}
+
+.tbl-50{
+    width: 50%;
+    padding: 1%;
+}
+
+.tbl-100 th {
+    text-align: left;
+    border-bottom: 1px solid #000;
+}
+
+.tbl-100 td {
+    /*padding: 0%;*/
+}
+
+.success {
+    color: green;
+}
+
+.error {
+    color: #ff4757;
+}
+
+/*login form section*/
+.login-container {
+    background-image: url('../images/library-bg1.jpg');
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-container form{
+    width: 50%;
+    border: 1px solid #ff4757;
+    border-radius: 12px;
+    padding: 2%;
+    background-color: rgba(0, 0, 0, .8);
+}
+
+.login-container form input{
+    width: 100%;
+    margin: 1% 0;
+    padding: 1%;
+}
