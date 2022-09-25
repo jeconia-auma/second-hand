@@ -43,6 +43,11 @@
 .footer .wrapper a:link,.footer .wrapper a:visited {
     color: #fff;
 }
+
+.footer .blocker {
+    display: block;
+    text-decoration: none;
+}
 /*end of footer section*/
 
 .container {

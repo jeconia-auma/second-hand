@@ -3,7 +3,7 @@
     <div class="wrapper">
         <h1>Manage Books</h1>
         <br><br>
-        <a href="" class="btn-primary">Add Books</a>
+        <a href="<?php echo SITEURL?>admin/add-book.php" class="btn-primary">Add Books</a>
         <br><br>
     </div>
 </div>

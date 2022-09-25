@@ -15,6 +15,11 @@
                 unset($_SESSION['del-category']);
                 echo "<br><br>";
             }
+            if(isset($_SESSION['update-category'])){
+                echo $_SESSION['update-category'];
+                unset($_SESSION['update-category']);
+                echo "<br><br>";
+            }
         ?>
 
         <a href="<?php echo SITEURL.'admin/add-category.php'; ?>" class="btn-primary">Add Category</a>
@@ -63,7 +68,7 @@
                                 <td><?php echo $featured;?></td>
                                 <td><?php echo $active;?></td>
                                 <td>
-                                    <a href="<?php echo SITEURL.'admin/update-category.php?id='.$id.'&image_name='.$image_name;?>" class="btn-secondary">Update Category</a>
+                                    <a href="<?php echo SITEURL.'admin/update-category.php?id='.$id;?>" class="btn-secondary">Update Category</a>
                                     <a href="<?php echo SITEURL.'admin/delete-category.php?id='.$id;?>" class="btn-danger">Delete Category</a>
                                 </td>
                             </tr>
