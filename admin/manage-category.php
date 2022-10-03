@@ -68,8 +68,8 @@
                                 <td><?php echo $featured;?></td>
                                 <td><?php echo $active;?></td>
                                 <td>
-                                    <a href="<?php echo SITEURL.'admin/update-category.php?id='.$id;?>" class="btn-secondary">Update Category</a>
-                                    <a href="<?php echo SITEURL.'admin/delete-category.php?id='.$id;?>" class="btn-danger">Delete Category</a>
+                                    <a href="<?php echo SITEURL.'admin/update-category.php?id='.$id;?>" class="btn-secondary"><i class="fa-solid fa-pen-to-square"></i> Update</a>
+                                    <a href="<?php echo SITEURL.'admin/delete-category.php?id='.$id;?>" class="btn-danger"><i class="fa-solid fa-trash-can"></i> Delete</a>
                                 </td>
                             </tr>
 

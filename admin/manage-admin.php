@@ -56,8 +56,8 @@
                                 <td><?php echo $full_name; ?></td>
                                 <td><?php echo $email;?></td>
                                 <td>
-                                    <a href="<?php echo SITEURL.'admin/update-admin.php?id='.$id; ?>" class="btn-secondary">Update Admin</a>
-                                    <a href="<?php echo SITEURL.'admin/delete-admin.php?id='.$id; ?>" class="btn-danger">Delete Admin</a>
+                                    <a href="<?php echo SITEURL.'admin/update-admin.php?id='.$id; ?>" class="btn-secondary"><i class="fa-solid fa-pen-to-square"></i> Update</a>
+                                    <a href="<?php echo SITEURL.'admin/delete-admin.php?id='.$id; ?>" class="btn-danger"><i class="fa-solid fa-trash-can"></i> Delete</a>
                                     <a href="<?php echo SITEURL.'admin/change-password.php?id='.$id; ?>" class="btn-primary">Change Password</a>
                                 </td>
                             </tr>
