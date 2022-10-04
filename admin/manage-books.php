@@ -9,6 +9,16 @@
                 unset($_SESSION['add-book']);
                 echo "<br></br>";
             }
+            if(isset($_SESSION['del-book'])){
+                echo $_SESSION['del-book'];
+                unset($_SESSION['del-book']);
+                echo "<br></br>";
+            }
+            if(isset($_SESSION['update-book'])){
+                echo $_SESSION['update-book'];
+                unset($_SESSION['update-book']);
+                echo "<br></br>";
+            }
         ?>
         <a href="<?php echo SITEURL?>admin/add-book.php" class="btn-primary">Add Books</a>
         <br><br>
@@ -60,7 +70,7 @@
                                     <td><?php echo $total; ?></td>
                                     <td>
                                         <a href="<?php echo SITEURL.'admin/update-book.php?id='.$id;?>" class="btn-secondary"><i class="fa-solid fa-pen-to-square"></i> Update</a>
-                                        <a href="<?php echo SITEURL.'admin/update-book.php?id='.$id;?>" class="btn-danger"><i class="fa-solid fa-trash-can"></i> Delete</a>
+                                        <a href="<?php echo SITEURL.'admin/delete-book.php?id='.$id;?>" class="btn-danger"><i class="fa-solid fa-trash-can"></i> Delete</a>
                                     </td>
                                 </tr>
                             <?php
