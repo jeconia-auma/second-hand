@@ -64,7 +64,20 @@
                                     <td>
                                         <img src="<?php echo SITEURL.'images/books/'.$image; ?>" width="100">
                                     </td>
-                                    <td><?php echo $category; ?></td>
+                                    <td>
+                                        <?php
+                                            //get the category name
+                                            $sql3 = "SELECT * FROM category WHERE id=$category";
+                                            $res3 = mysqli_query($conn, $sql3);
+                                            if($res3 == TRUE){
+                                                $count = mysqli_num_rows($res3);
+                                                if($count == 1){
+                                                    $row3 = mysqli_fetch_assoc($res3);
+                                                    echo $row3['title'];
+                                                }
+                                            }
+                                        ?>
+                                    </td>
                                     <td><?php echo $featured; ?></td>
                                     <td><?php echo $active; ?></td>
                                     <td><?php echo $total; ?></td>

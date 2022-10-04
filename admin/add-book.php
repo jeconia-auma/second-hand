@@ -36,7 +36,7 @@
                         <select name="category">
                             <?php
                                 //get the category name and id
-                                $sql = "SELECT * FROM category";
+                                $sql = "SELECT * FROM category WHERE active='yes'";
                                 $res = mysqli_query($conn, $sql);
                                 if($res == TRUE){
                                     if(mysqli_num_rows($res) > 0){

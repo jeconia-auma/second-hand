@@ -20,6 +20,7 @@
                     $description = $row['description'];
                     $price = $row['price'];
                     $current_image = $row['image_name'];
+                    $current_category = $row['category_id'];
                     $featured = $row['featured'];
                     $active = $row['active'];
                     $total = $row['total'];
@@ -82,15 +83,15 @@
                         <select name="category">
                             <?php
                                 //get the category name and id
-                                $sql = "SELECT * FROM category";
+                                $sql = "SELECT * FROM category WHERE active='yes'";
                                 $res = mysqli_query($conn, $sql);
                                 if($res == TRUE){
                                     if(mysqli_num_rows($res) > 0){
                                         while($row = mysqli_fetch_assoc($res)){
-                                            $id = $row['id'];
+                                            $category_id = $row['id'];
                                             $title = $row['title'];
                                             ?>
-                                                <option value="<?php echo $id; ?>"><?php echo $title; ?></option>
+                                                <option <?php if($current_category == $category_id) echo "selected"; ?> value="<?php echo $category_id; ?>"><?php echo $title; ?></option>
                                             <?php
                                         }
                                     }
@@ -116,12 +117,12 @@
                 <tr>
                     <td>Stock Available</td>
                     <td>
-                        <input type="number" name="total" min="0">
+                        <input type="number" name="total" min="0" value="<?php echo $total; ?>">
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <input type="submit" name="submit" value="Add Book" class="btn-primary">
+                        <input type="submit" name="submit" value="Update Book" class="btn-primary">
                         <input type="hidden" name="id" value="<?php echo $id; ?>">
                     </td>
                 </tr>
