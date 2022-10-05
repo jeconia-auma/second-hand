@@ -43,6 +43,8 @@
                 if($res == TRUE){
                     $count = mysqli_num_rows($res);
                     if($count > 0){
+                        //create serial number and initialize to 1
+                        $sn = 1;
                         while($row = mysqli_fetch_assoc($res)){
                             $id = $row['id'];
                             $title = $row['title'];
@@ -52,7 +54,7 @@
                             ?>
 
                             <tr>
-                                <td><?php echo $id;?></td>
+                                <td><?php echo $sn++;?></td>
                                 <td><?php echo $title;?></td>
                                 <td>
                                     <?php 
@@ -68,8 +70,8 @@
                                 <td><?php echo $featured;?></td>
                                 <td><?php echo $active;?></td>
                                 <td>
-                                    <a href="<?php echo SITEURL.'admin/update-category.php?id='.$id;?>" class="btn-secondary"><i class="fa-solid fa-pen-to-square"></i> Update</a>
-                                    <a href="<?php echo SITEURL.'admin/delete-category.php?id='.$id;?>" class="btn-danger"><i class="fa-solid fa-trash-can"></i> Delete</a>
+                                    <a href="<?php echo SITEURL.'admin/update-category.php?id='.$id;?>" class="btn-secondary"><i class="fa-solid fa-pen-to-square" title="update"></i></a>
+                                    <a href="<?php echo SITEURL.'admin/delete-category.php?id='.$id;?>" class="btn-danger"><i class="fa-solid fa-trash-can" title="delete"></i></a>
                                 </td>
                             </tr>
 

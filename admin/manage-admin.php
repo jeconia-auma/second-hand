@@ -43,6 +43,8 @@
                 if($res == TRUE){
                     $count = mysqli_num_rows($res);
                     if($count > 0){
+                        //create serial number and initalize to 1
+                        $sn = 1;
                         while($row = mysqli_fetch_assoc($res)){
                             //display the values in our table
                             $id = $row['id'];
@@ -52,12 +54,12 @@
                             ?>
                             
                             <tr>
-                                <td><?php echo $id;?></td>
+                                <td><?php echo $sn++;?></td>
                                 <td><?php echo $full_name; ?></td>
                                 <td><?php echo $email;?></td>
                                 <td>
-                                    <a href="<?php echo SITEURL.'admin/update-admin.php?id='.$id; ?>" class="btn-secondary"><i class="fa-solid fa-pen-to-square"></i> Update</a>
-                                    <a href="<?php echo SITEURL.'admin/delete-admin.php?id='.$id; ?>" class="btn-danger"><i class="fa-solid fa-trash-can"></i> Delete</a>
+                                    <a href="<?php echo SITEURL.'admin/update-admin.php?id='.$id; ?>" class="btn-secondary"><i class="fa-solid fa-pen-to-square" title="update"></i></a>
+                                    <a href="<?php echo SITEURL.'admin/delete-admin.php?id='.$id; ?>" class="btn-danger"><i class="fa-solid fa-trash-can" title="delete"></i></a>
                                     <a href="<?php echo SITEURL.'admin/change-password.php?id='.$id; ?>" class="btn-primary">Change Password</a>
                                 </td>
                             </tr>

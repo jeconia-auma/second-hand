@@ -45,6 +45,8 @@
 
                 if($res == TRUE){
                     if(mysqli_num_rows($res) > 0){
+                        //create serial number and innitialize to 1
+                        $sn = 1;
                         while($row = mysqli_fetch_assoc($res)){
                             $id = $row['id'];
                             $title  = $row['title'];
@@ -57,12 +59,20 @@
                             $total  = $row['total'];
                             ?>
                                 <tr>
-                                    <td><?php echo $id; ?></td>
+                                    <td><?php echo $sn++; ?></td>
                                     <td><?php echo $title; ?></td>
                                     <td><?php echo $description; ?></td>
                                     <td><?php echo $price; ?></td>
                                     <td>
-                                        <img src="<?php echo SITEURL.'images/books/'.$image; ?>" width="100">
+                                        <?php
+                                            if($image != ""){
+                                                ?>
+                                                    <img src="<?php echo SITEURL.'images/books/'.$image; ?>" width="100">
+                                                <?php
+                                            }else{
+                                                echo "<div class='error'>Image Not Available</div>";
+                                            }
+                                        ?>
                                     </td>
                                     <td>
                                         <?php
@@ -82,8 +92,8 @@
                                     <td><?php echo $active; ?></td>
                                     <td><?php echo $total; ?></td>
                                     <td>
-                                        <a href="<?php echo SITEURL.'admin/update-book.php?id='.$id;?>" class="btn-secondary"><i class="fa-solid fa-pen-to-square"></i> Update</a>
-                                        <a href="<?php echo SITEURL.'admin/delete-book.php?id='.$id;?>" class="btn-danger"><i class="fa-solid fa-trash-can"></i> Delete</a>
+                                        <a href="<?php echo SITEURL.'admin/update-book.php?id='.$id;?>" class="btn-secondary"><i class="fa-solid fa-pen-to-square" title="update"></i></a>
+                                        <a href="<?php echo SITEURL.'admin/delete-book.php?id='.$id;?>" class="btn-danger"><i class="fa-solid fa-trash-can" title="delete"></i></a>
                                     </td>
                                 </tr>
                             <?php
