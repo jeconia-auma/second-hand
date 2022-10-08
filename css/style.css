@@ -1,0 +1,209 @@
+/*
+Author: Okoth Jeconia Auma
+Project Name: Online Second Hand Books Purchase and Delivery System
+Case Study: Kinuthia and Kinuthia Bookshop
+Development Year: 2022
+*/
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    background-color: rgb(230, 230, 230);
+}
+
+.wrapper {
+    width: 80%;
+    padding: 2%;
+    margin: 0 auto;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.clearfix {
+    display: block;
+    clear: both;
+}
+
+.btn-secondary{
+    padding: 1% 6px;
+    background-color: rgb(84, 201, 84);
+    text-decoration: none;
+    color: #fff;
+    display: inline-block;
+}
+
+.btn-danger{
+    padding: 1% 6px;
+    background-color: #ff4757;
+    text-decoration: none;
+    color: #fff;
+    display: inline-block;
+}
+
+.btn-primary{
+    padding: 4px 6px;
+    background-color: steelblue;
+    text-decoration: none;
+    color: #fff;
+    display: inline-block;
+}
+
+.tbl-100{
+    width: 100%;
+    padding: 1%;
+}
+
+.tbl-50{
+    width: 50%;
+    padding: 1%;
+}
+
+.tbl-100 th {
+    text-align: left;
+    border-bottom: 1px solid #000;
+}
+
+/*.tbl-100 td {
+    padding: 0%;
+}*/
+
+.success {
+    color: green;
+}
+
+.error {
+    color: #ff4757;
+}
+
+/*start of header section*/
+.header {
+    width: 100vw;
+}
+
+.header .logo, .header .menu {
+    display: block;
+    margin: 1%;
+}
+
+.header .menu ul{
+    list-style-type: none;
+}
+
+.header .menu ul li {
+    display: inline-block;
+}
+
+.header .menu ul li a:link,
+.header .menu ul li a:visited{
+    text-decoration: none;
+    color:steelblue;
+}
+
+.header .menu ul li a:link:hover,
+.header .menu ul li a:visited:hover {
+    color: blue;
+    font-weight: bold;
+}
+
+/*end of header section*/
+
+/*start of search section*/
+.search {
+    width: 100vw;
+    background-color: rgb(130, 185, 230);
+    padding: 1%;
+}
+
+.search form {
+    width: 100%;
+}
+
+.search .wrapper form input {
+    display: block;
+    width: 100%;
+    margin-bottom: .5em;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    height: 30px;
+}
+
+.search .wrapper form input[type="text"]{
+    padding-left: .4em;
+}
+
+.search .wrapper form input[type="text"]:hover,
+.search .wrapper form input[type="text"]:focus,
+.search .wrapper form input[type="text"]:active{
+    border: 2px solid blue;
+}
+
+.search .wrapper form input[type="submit"]{
+    background-color: steelblue;
+    color: white;
+    font-weight: bold;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+.search .wrapper form input[type="submit"]:hover,
+.search .wrapper form input[type="submit"]:active{
+    background-color: rgb(33, 129, 219);
+}
+
+/*end of search section*/
+
+/*footer section*/
+.footer {
+    background-color: steelblue;
+    color: white;
+}
+
+.footer .wrapper a:link,.footer .wrapper a:visited {
+    color: #fff;
+}
+
+.footer .blocker {
+    display: block;
+    text-decoration: none;
+}
+/*end of footer section*/
+
+@media only screen and (min-width: 760px){
+    /*start of header section*/
+    .header .logo {
+        width: 30%;
+        text-align: left;
+        margin-left: 0;
+    }
+
+    .header .menu {
+        width: 60%;
+    }
+
+    .header .logo, .header .menu{
+        display: inline-block;
+    }
+
+    /*end of header section*/
+
+    /*start of search section*/
+    .search .wrapper form input[type="text"]{
+        width: 70%;
+    }
+
+    .search .wrapper form input[type="submit"]{
+        width: 20%;
+    }
+
+    .search .wrapper form input{
+        display: inline-block;
+    }
+    /*end of search section*/
+}
