@@ -27,6 +27,7 @@
             <tr>
                 <th>Id</th>
                 <th>Title</th>
+                <th>Author</th>
                 <th>Description</th>
                 <th>price</th>
                 <th>Image</th>
@@ -50,6 +51,7 @@
                         while($row = mysqli_fetch_assoc($res)){
                             $id = $row['id'];
                             $title  = $row['title'];
+                            $author = $row['author'];
                             $description  = $row['description'];
                             $price  = $row['price'];
                             $image  = $row['image_name'];
@@ -61,6 +63,7 @@
                                 <tr>
                                     <td><?php echo $sn++; ?></td>
                                     <td><?php echo $title; ?></td>
+                                    <td><?php echo $author; ?></td>
                                     <td><?php echo $description; ?></td>
                                     <td><?php echo $price; ?></td>
                                     <td>

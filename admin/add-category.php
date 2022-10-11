@@ -81,7 +81,7 @@
                     $destination_path = '../images/category/'.$image_name;
 
                     //check if its really an image
-                    if($ext == "jpg" || $ext == "png" || $ext == "jpeg"){
+                    if($ext == "png"){
                         //if not empty then upload the image and check if uploaded successfully
                         $upload = move_uploaded_file($source_path, $destination_path);
     
@@ -91,7 +91,7 @@
                             die();
                         }
                     }else{
-                        $_SESSION['add-category'] = "<div class='error'>Failed! File must be an image(.jpg, .png, .jpeg)</div>";
+                        $_SESSION['add-category'] = "<div class='error'>Failed! File must be an image(.png)</div>";
                         header("location:".SITEURL."admin/manage-category.php");
                         die();
                     }

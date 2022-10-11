@@ -46,6 +46,14 @@ Development Year: 2022
     display: inline-block;
 }
 
+.btn-add-to-cart{
+    padding: 1% 6px;
+    background-color: #ffa600;
+    text-decoration: none;
+    color: #fff;
+    display: inline-block;
+}
+
 .btn-primary{
     padding: 4px 6px;
     background-color: steelblue;
@@ -86,6 +94,10 @@ Development Year: 2022
     width: 100vw;
 }
 
+.header .wrapper{
+    padding: 0;
+}
+
 .header .logo, .header .menu {
     display: block;
     margin: 1%;
@@ -103,12 +115,14 @@ Development Year: 2022
 .header .menu ul li a:visited{
     text-decoration: none;
     color:steelblue;
+    transition: all .3s ease-in;
 }
 
 .header .menu ul li a:link:hover,
 .header .menu ul li a:visited:hover {
     color: blue;
     font-weight: bold;
+    text-decoration: underline;
 }
 
 /*end of header section*/
@@ -159,6 +173,79 @@ Development Year: 2022
 
 /*end of search section*/
 
+/*category section*/
+.category, .category .wrapper .category-items {
+    width: 100%;
+    display: block;
+}
+
+.category .wrapper .category-items a{
+    border-radius: 12px;
+    position: relative;
+    margin: 1em;
+}
+
+.category-items a .category-title{
+    position: absolute;
+    width: 100%;
+    bottom: 20px;
+}
+
+.category .wrapper .category-items a:focus,
+.category .wrapper .category-items a:active,
+.category .wrapper .category-items a:link,
+.category .wrapper .category-items a:visited{
+    width: 100%;
+    border-radius: 12px;
+    padding: 0;
+    text-decoration: none;
+    text-shadow: 0 0 12px black;
+    color: #fff;
+    font-size: 1em;
+    font-weight: bold;
+}
+
+.category .wrapper .category-items img{
+    width: 100%;
+    border-radius: 12px;
+    padding: 0;
+}
+/*End of Category Section*/
+
+/*Beginning of Book section*/
+.book {
+    padding: 1%;
+    width: 100%;
+}
+
+.book form {
+    width: fit-content;
+    display: block;
+}
+
+.book form .image{
+    width: 20%;
+    border-radius: 4px;
+    margin: 8px;
+}
+
+.book form .image img{
+    border-radius: 8px;
+    width: 100%;
+}
+
+.book form .book-details {
+    width: 70%;
+    margin: 8px;
+    overflow: auto;
+}
+
+.book form .image, .book form .book-details{
+    display: inline-block;
+    margin: 8px;
+}
+/*End of Book section */
+
 /*footer section*/
 .footer {
     background-color: steelblue;
@@ -185,12 +272,16 @@ Development Year: 2022
 
     .header .menu {
         width: 60%;
+        height: 86px;
+        display: flex;
+        flex-direction: row;
+        justify-content: end;
+        align-items: center;
     }
 
     .header .logo, .header .menu{
-        display: inline-block;
+        float: left;
     }
-
     /*end of header section*/
 
     /*start of search section*/
@@ -206,4 +297,23 @@ Development Year: 2022
         display: inline-block;
     }
     /*end of search section*/
+
+    /*Category Section*/
+    .category .wrapper {
+        width: 100%;
+    }
+
+    .category .wrapper .category-items {
+        width: 28%;
+        float: left;
+        margin: 2.3%;
+    }
+    /*End of category Section*/
+
+    /*Beginning of Book Section*/
+    .book form {
+        width: 40%;
+        display: inline-block;
+    }
+    /*End of Book Section*/
 }

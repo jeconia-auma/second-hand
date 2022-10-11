@@ -110,7 +110,7 @@
             $destination_path = '../images/category/'.$image_name;
 
             //check if its really an image
-            if($ext == "jpg" || $ext == "png" || $ext == "jpeg"){
+            if($ext == "png"){
                 //first delete the current image
                 if($current_image != ""){
                     if(unlink("../images/category/".$current_image) == FALSE){
@@ -129,7 +129,7 @@
                     die();
                 }
             }else{
-                $_SESSION['update-category'] = "<div class='error'>Failed! File must be an image(.jpg, .png, .jpeg)</div>";
+                $_SESSION['update-category'] = "<div class='error'>Failed! File must be an image(.png)</div>";
                 header("location:".SITEURL."admin/manage-category.php");
                 die();
             }

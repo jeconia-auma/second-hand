@@ -61,7 +61,7 @@
                             WHERE id = $id;
                         ";
                         
-                        $res2 = mysqli_query($sql2);
+                        $res2 = mysqli_query($conn, $sql2);
                         if($res2 == TRUE){
                             $_SESSION['change-pass'] = "<div class='success'>Admin Password Changed Successfully</div>";
                             header('location:'.SITEURL.'admin/manage-admin.php');

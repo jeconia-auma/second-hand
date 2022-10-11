@@ -13,6 +13,12 @@
                     </td>
                 </tr>
                 <tr>
+                    <td>Book Author</td>
+                    <td>
+                        <input type="text" name="author" required>
+                    </td>
+                </tr>
+                <tr>
                     <td>Book Description</td>
                     <td>
                         <textarea name="description" cols="30" rows="5"></textarea>
@@ -87,6 +93,7 @@
     //check is submitted
     if(isset($_POST['submit'])){
         $title = $_POST['title'];
+        $author = $_POST['author'];
         $description = $_POST['description'];
         $price = $_POST['price'];
         $category_id = $_POST['category'];
@@ -122,12 +129,16 @@
 
                 if($upload == FALSE){
                     $_SESSION['add-book'] = "<div class='error'>Failed to Upload image</div>";
-                    header("location:".SITEURL."admin/manage-books.php");
+                    ?> 
+                        <script>location.replace("<?php echo SITEURL;?>admin/manage-books.php");</script>
+                    <?php
                     die();
                 }
             }else{
                 $_SESSION['add-book'] = "<div class='error'>Failed! File must be an image(.jpg, .png, .jpeg)</div>";
-                header("location:".SITEURL."admin/manage-books.php");
+                ?> 
+                    <script>location.replace("<?php echo SITEURL;?>admin/manage-books.php");</script>
+                <?php
                 die();
             }
         }else{
@@ -137,10 +148,11 @@
         //create the query
         $sql2 = "INSERT INTO books SET
             title = '$title',
+            author = '$author',
             `description` = '$description',
             price = $price,
             image_name = '$image_name',
-            category_id = '$category_id',
+            category_id = $category_id,
             featured = '$featured',
             active = '$active',
             total = $total_count
@@ -152,10 +164,15 @@
         //check if executed successfully
         if($res2 == TRUE){
             $_SESSION['add-book'] = "<div class='success'>Book Added Successfully</div>";
-            header('location:'.SITEURL.'admin/manage-books.php');
+            //header('location:'.SITEURL.'admin/manage-books.php');
+            ?> 
+                <script>location.replace("<?php echo SITEURL;?>admin/manage-books.php");</script>
+            <?php
         }else{
             $_SESSION['add-book'] = "<div class='error'>Failed to add Book</div>".mysqli_error($conn);
-            header('location:'.SITEURL.'admin/manage-books.php');
+            ?> 
+                <script>location.replace("<?php echo SITEURL;?>admin/manage-books.php");</script>
+            <?php
         }
     }
 ?>

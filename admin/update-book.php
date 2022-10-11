@@ -17,6 +17,7 @@
                     $row = mysqli_fetch_assoc($res1);
                     $id = $row['id'];
                     $title = $row['title'];
+                    $author = $row['author'];
                     $description = $row['description'];
                     $price = $row['price'];
                     $current_image = $row['image_name'];
@@ -44,6 +45,12 @@
                     </td>
                 </tr>
                 <tr>
+                    <td>Book Author</td>
+                    <td>
+                        <input type="text" name="author" required value="<?php echo $author;?>">
+                    </td>
+                </tr>
+                <tr>
                     <td>Book Description</td>
                     <td>
                         <textarea name="description" cols="30" rows="5"><?php echo $description;?></textarea>
@@ -61,7 +68,7 @@
                     <?php
                             if($current_image != ""){
                                 ?>
-                                    <img src="<?php echo '../images/books/'.$current_image;?>" width="150px">
+                                    <img src="<?php echo '../images/books/'.$current_image;?>" width="100px">
                                 <?php
                             }else{
                                 ?>
@@ -134,6 +141,7 @@
             //1. Get the form data
             $id = $_POST['id'];
             $title = $_POST['title'];
+            $author = $_POST['author'];
             $description = $_POST['description'];
             $price = $_POST['price'];
             $image_names = $_FILES['image']['name'];
@@ -162,7 +170,7 @@
                 $destination_path = '../images/books/'.$image_name;
 
                 //check if its really an image
-                if($ext == "jpg" || $ext == "png" || $ext == "jpeg"){
+                if($ext == "png"){
                     //first delete the current image
                     if($current_image != ""){
                         if(unlink("../images/books/".$current_image) == FALSE){
@@ -181,7 +189,7 @@
                         die();
                     }
                 }else{
-                    $_SESSION['update-book'] = "<div class='error'>Failed! File must be an image(.jpg, .png, .jpeg)</div>";
+                    $_SESSION['update-book'] = "<div class='error'>Failed! File must be an image(.png)</div>";
                     header("location:".SITEURL."admin/manage-category.php");
                     die();
                 }
@@ -192,6 +200,7 @@
 
             $sql2 = "UPDATE books SET
                 title = '$title',
+                author = '$author',
                 `description` = '$description',
                 price = $price,
                 image_name = '$image_name',

@@ -9,6 +9,7 @@
     <title>Second Hand Books</title>
     <link rel="stylesheet" href="../css/admin.css">
     <link rel="stylesheet" href="../fonts/css/all.css">
+    <link rel="shortcut icon" href="../images/icons/logo3.png" type="image/x-icon">
 </head>
 <body>
     <div class="menu">
