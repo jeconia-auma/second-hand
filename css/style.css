@@ -92,6 +92,7 @@ Development Year: 2022
 /*start of header section*/
 .header {
     width: 100vw;
+    border-bottom: 1px solid #000;
 }
 
 .header .wrapper{

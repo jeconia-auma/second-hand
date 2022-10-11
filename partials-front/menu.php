@@ -33,7 +33,8 @@
                     <li><a href="<?php echo SITEURL; ?>cart.php"><i class="fa-solid fa-shopping-cart error"></i>
                         <?php
                             //Check for the cart items
-                            $sql_cart = "SELECT * FROM cart where user_id = 12";
+                            $user_id = $_SESSION['customer'];
+                            $sql_cart = "SELECT * FROM cart WHERE user_id = $user_id";
                             $res_cart = mysqli_query($conn, $sql_cart);
 
                             if($res_cart == TRUE){

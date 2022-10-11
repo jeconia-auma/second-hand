@@ -28,7 +28,7 @@
 </html>
 
 <?php
-    if(isset($_POST)){
+    if(isset($_POST['submit'])){
         $email = $_POST['email'];
         $password = $_POST['password'];
 
@@ -39,7 +39,7 @@
             $count = mysqli_num_rows($res);
             if($count == 1){
                 $row = mysqli_fetch_assoc($res);
-                $_SESSION['customer'] = $row['full_name'];
+                $_SESSION['customer'] = $row['id'];
                 header('location:'.SITEURL);
             }
         }

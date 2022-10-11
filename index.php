@@ -2,6 +2,15 @@
 
 <?php include("partials-front/search.php");?>
 
+<?php
+
+if(isset($_SESSION['cart'])){
+    echo $_SESSION['cart'];
+    unset($_SESSION['cart']);
+}
+
+?>
+
 <!--Beginning of Category Section-->
 <div class="category">
     <div class="wrapper">
@@ -67,7 +76,7 @@
                             $active = $row2['active'];
                             $total = $row2['total'];
                             ?>
-                                <form action="" method="post">
+                                <form action="cart.php" target="_blank" method="post">
                                     <div class="image">
                                         <img src="<?php echo SITEURL;?>images/books/<?php echo $image_name; ?>">
                                     </div>
@@ -84,8 +93,8 @@
                                         <input type="hidden" name="featured" value="<?php echo $featured;?>">
                                         <input type="hidden" name="active" value="<?php echo $active;?>">
                                         <input type="hidden" name="total" value="<?php echo $total;?>">
-                                        <input type="hidden" name="id" value="<?php echo $id;?>">
-                                        <input type="submit" value="Add to cart" class="btn-add-to-cart">
+                                        <input type="hidden" name="book_id" value="<?php echo $id;?>">
+                                        <input type="submit" value="Add to cart" class="btn-add-to-cart" name="submit">
                                     </div>
                                 </form>
                             <?php
@@ -102,9 +111,5 @@
     </div>
 </div>
 <!--End of Books Section-->
-
-<?php
-
-?>
 
 <?php include("partials-front/footer.php"); ?>

@@ -73,8 +73,13 @@
                     $res2 = mysqli_query($conn, $sql2);
                     if($res2 == TRUE){
                         echo "<script>alert('Welcome! Thank you for Sign Up');</script>";
-                        $_SESSION['customer'] = $email;
-                        header('location:'.SITEURL);
+                        $sql3 = "SELECT * FROM users where email = '$email'";
+                        $res3 = mysqli_query($conn, $sql3);
+                        if(mysqli_num_rows($res3) == 1){
+                            $row3 = mysqli_fetch_assoc($res3);
+                            $_SESSION['customer'] = $row3['id'];
+                            header('location:'.SITEURL);
+                        }
                     }else{
                         echo mysqli_error($conn);
                     }
