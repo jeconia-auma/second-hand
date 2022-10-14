@@ -30,7 +30,8 @@
                     <li><a href="<?php echo SITEURL; ?>category.php">Categories</a></li>
                     <li><a href="<?php echo SITEURL; ?>books.php">Books</a></li>
                     <li><a href="<?php echo SITEURL; ?>contacts.php">Contacts</a></li>
-                    <li><a href="<?php echo SITEURL; ?>cart.php"><i class="fa-solid fa-shopping-cart error"></i>
+                    <li><a href="<?php echo SITEURL; ?>logout.php">Logout</a></li>
+                    <li><a href="<?php echo SITEURL; ?>checkout.php"><i class="fa-solid fa-shopping-cart error"></i>
                         <?php
                             //Check for the cart items
                             $user_id = $_SESSION['customer'];
@@ -41,7 +42,7 @@
                                 //get the number
                                 $count_cart = mysqli_num_rows($res_cart);
                                 ?>
-                                    <span class="error"><?php echo $count_cart;?></span>
+                                    <span class="error"><?php //echo $count_cart;?></span>
                                 <?php
                             }else{
                                 //

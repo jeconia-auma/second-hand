@@ -92,7 +92,7 @@
 <?php
     //check is submitted
     if(isset($_POST['submit'])){
-        $title = $_POST['title'];
+        $title = strtoupper($_POST['title']);
         $author = $_POST['author'];
         $description = $_POST['description'];
         $price = $_POST['price'];

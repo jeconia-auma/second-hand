@@ -140,7 +140,7 @@
         if(isset($_POST['submit'])){
             //1. Get the form data
             $id = $_POST['id'];
-            $title = $_POST['title'];
+            $title = strtoupper($_POST['title']);
             $author = $_POST['author'];
             $description = $_POST['description'];
             $price = $_POST['price'];
@@ -216,10 +216,13 @@
             
             if($res2 == TRUE){
                 $_SESSION['update-book'] = "<div class='success'>Book Updated Successfully</div>";
-                header("location:".SITEURL."admin/manage-books.php");
+                //header("Location:".SITEURL."admin/manage-books.php");
+                ?>
+                    <script>window.location.replace("manage-books.php")</script>
+                <?php
             }else{
                 $_SESSION['update-book'] = "<div class='error'>Failed to Update Book</div>".mysqli_error($conn);
-                header("location:".SITEURL."admin/manage-books.php");
+                header("Location:".SITEURL."admin/manage-books.php");
             }
         }
     ?>

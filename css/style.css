@@ -21,6 +21,10 @@ Development Year: 2022
     margin: 0 auto;
 }
 
+.description {
+    font-size: 10px;
+}
+
 .text-center {
     text-align: center;
 }
@@ -220,8 +224,9 @@ Development Year: 2022
 }
 
 .book form {
-    width: fit-content;
+    width: 50%;
     display: block;
+    font-size: 12px;
 }
 
 .book form .image{
@@ -306,7 +311,8 @@ Development Year: 2022
 
     .category .wrapper .category-items {
         width: 28%;
-        float: left;
+        display: inline-block;
+        /*float: left;*/
         margin: 2.3%;
     }
     /*End of category Section*/

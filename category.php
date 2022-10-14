@@ -5,7 +5,7 @@
     <div class="wrapper">
         <h1 class="text-center">Explore Books</h1>
         <?php
-            $sql = "SELECT * FROM category WHERE featured='yes' AND active='yes' LIMIT 3";
+            $sql = "SELECT * FROM category WHERE active='yes'";
             $res = mysqli_query($conn, $sql);
 
             if($res == TRUE){
@@ -18,7 +18,7 @@
                         $image_name = $row['image_name'];
                         ?>
                             <div class="category-items">
-                                <a href="">
+                                <a href="<?php echo SITEURL;?>books-category.php?id=<?php echo $id;?>">
                                     <img src="<?php echo SITEURL; ?>images/category/<?php echo $image_name; ?>" alt="">
                                     <div class="category-title text-center">
                                         <span><?php echo $title; ?></span>
@@ -36,11 +36,5 @@
     </div>
 </div>
 <!--End of Category Section-->
-
-<div class="container">
-    <div class="wrapper">
-        
-    </div>
-</div>
 
 <?php include("partials-front/footer.php"); ?>

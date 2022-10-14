@@ -15,6 +15,11 @@
         if($res_test ==  TRUE){
             if(mysqli_num_rows($res_test) > 0){
                 $_SESSION['cart'] = "<script>alert('book already in cart');</script>";
+                echo $_SESSION['cart'];
+                unset($_SESSION['cart']);
+                ?>
+                        <script>window.close("cart.php")</script>
+                <?php
             }else{
                 //query to add the item to cart
                 $sql = "INSERT INTO cart SET
@@ -28,12 +33,20 @@
                 $res = mysqli_query($conn, $sql);
         
                 if($res == TRUE){
-                    echo "done";
                     //header('location:'.SITEURL);
-                    echo "<script>window.close('cart.php');</script>";
+                    $_SESSION['cart'] = "<script>alert('Book Added to Cart Successfully! Click the tray above to checkout your books');</script>";
+                    echo $_SESSION['cart'];
+                    unset($_SESSION['cart']);
+                    ?>
+                        <script>window.close("cart.php")</script>
+                    <?php
                 }else{
-                    echo "<script>alert('Book was not added to cart<script>');";
                     $_SESSION['cart'] = "<script>alert('failed book was not added');</script>";
+                    echo $_SESSION['cart'];
+                    unset($_SESSION['cart']);
+                    ?>
+                        <script>window.close("cart.php")</script>
+                    <?php
                 }
             }
         }else{

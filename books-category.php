@@ -1,62 +1,23 @@
 <?php include("partials-front/menu.php"); ?>
 
-<?php include("partials-front/search.php");?>
-
-<?php
-
-    /*if(isset($_SESSION['cart'])){
-        echo $_SESSION['cart'];
-        unset($_SESSION['cart']);
-    }*/
-
-?>
-
-<!--Beginning of Category Section-->
-<div class="category">
-    <div class="wrapper">
-        <h1 class="text-center">Explore Books</h1>
-        <?php
-            $sql = "SELECT * FROM category WHERE featured='yes' AND active='yes' LIMIT 3";
-            $res = mysqli_query($conn, $sql);
-
-            if($res == TRUE){
-                $count = mysqli_num_rows($res);
-                if($count > 0){
-                    //Data is in database
-                    while($row = mysqli_fetch_assoc($res)){
-                        $id = $row['id'];
-                        $title = $row['title'];
-                        $image_name = $row['image_name'];
-                        ?>
-                            <div class="category-items">
-                                <a href="<?php echo SITEURL;?>books-category.php?id=<?php echo $id;?>">
-                                    <img src="<?php echo SITEURL; ?>images/category/<?php echo $image_name; ?>" alt="">
-                                    <div class="category-title text-center">
-                                        <span><?php echo $title; ?></span>
-                                    </div>
-                                </a>
-                            </div>
-                        <?php
-                    }
-                }else{
-                    echo "<div class='error text-center'>No Category Available</div>";
-                }
-            }
-        ?>
-        <div class="clearfix"></div>
-    </div>
-</div>
-<!--End of Category Section-->
-
 <!--Beginning of Books Section-->
 <div class="container">
     <div class="wrapper">
-        <h1 class="text-center">Buy Books</h1>
+        <?php
+            $category_id = $_GET['id'];
+            $category_sql = "SELECT * FROM category WHERE id = $category_id";
+            $category_res = mysqli_query($conn, $category_sql);
+            if($category_res == TRUE){
+                $category_row = mysqli_fetch_assoc($category_res);
+                $category_name = $category_row['title'];
+            }
+        ?>
+        <h1 class="text-center">Category: <?php echo $category_name; ?></h1>
         <div class="book">
             <?php
                 //Get all the books from database
                 //Qeury to get the data
-                $sql2 = "SELECT * FROM books WHERE featured='yes' AND active='yes' LIMIT 8";
+                $sql2 = "SELECT * FROM books WHERE category_id = $category_id AND active='yes' LIMIT 8";
                 //Execute the query
                 $res2 = mysqli_query($conn, $sql2);
                 if($res2 == TRUE){
@@ -83,7 +44,7 @@
                                     <div class="book-details">
                                         <h5>Title: <?php echo $title;?></h5>
                                         <h5>Author: <?php echo $author;?></h5>
-                                        <p class="description"><?php echo $description;?></p>
+                                        <p><?php echo $description;?></p>
                                         <input type="hidden" name="title" value="<?php echo $title;?>">
                                         <input type="hidden" name="author" value="<?php echo $author;?>">
                                         <input type="hidden" name="description" value="<?php echo $description;?>">
@@ -111,5 +72,6 @@
     </div>
 </div>
 <!--End of Books Section-->
+
 
 <?php include("partials-front/footer.php"); ?>
