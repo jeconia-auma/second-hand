@@ -148,3 +148,51 @@ Development Year: 2022
     margin: 1% 0;
     padding: 1%;
 }
+
+/*dashboard main section*/
+.shortcuts{
+    width: 21%;
+    display: inline-block;
+    background-color: #fff;
+    padding: 2%;
+    border-radius: 4px;
+    box-shadow: 3px 5px 8px rgba(0, 0, 0, .4);
+    background-image: linear-gradient(60deg, rgb(0, 62, 112), steelblue, rgb(202, 145, 155));
+}
+
+.head{
+    padding: 1%;
+    margin: 8px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.head{
+    font-size: 1.5em;
+}
+
+.head h4, .shortcuts h5{
+    color: white;
+    font-weight: bold;
+}
+.shortcuts h5{
+    font-size: 1em;
+}
+
+#revenue {
+    width: 35%;
+    display: inline-block;
+    background-color: #fff;
+    padding: 2%;
+    border-radius: 4px;
+    box-shadow: 3px 5px 8px rgba(0, 0, 0, .4);
+    background-image: linear-gradient(60deg, rgb(0, 62, 112), steelblue, rgb(202, 145, 155));
+}
+
+#revenue h5{
+    color: white;
+}
+
+/*end of dashboar main section*/

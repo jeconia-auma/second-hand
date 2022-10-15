@@ -26,30 +26,30 @@
             <!--Menu Starts Here-->
             <div class="menu">
                 <ul>
-                    <li><a href="<?php echo SITEURL; ?>">Home</a></li>
+                    <li><a href="<?php echo SITEURL; ?>"><i class="fa-solid fa-home"></i>Home</a></li>
                     <li><a href="<?php echo SITEURL; ?>category.php">Categories</a></li>
                     <li><a href="<?php echo SITEURL; ?>books.php">Books</a></li>
                     <li><a href="<?php echo SITEURL; ?>contacts.php">Contacts</a></li>
-                    <li><a href="<?php echo SITEURL; ?>logout.php">Logout</a></li>
                     <li><a href="<?php echo SITEURL; ?>checkout.php"><i class="fa-solid fa-shopping-cart error"></i>
-                        <?php
+                    <?php
                             //Check for the cart items
                             $user_id = $_SESSION['customer'];
                             $sql_cart = "SELECT * FROM cart WHERE user_id = $user_id";
                             $res_cart = mysqli_query($conn, $sql_cart);
-
+                            
                             if($res_cart == TRUE){
                                 //get the number
                                 $count_cart = mysqli_num_rows($res_cart);
                                 ?>
-                                    <span class="error"><?php //echo $count_cart;?></span>
+                                    <span class="error" id="cart_count"></span>
                                 <?php
                             }else{
                                 //
                                 echo "Database did not execute the query";
                             }
-                        ?>
+                            ?>
                     </a></li>
+                    <li><a href="<?php echo SITEURL; ?>logout.php"><i class="fa-solid fa-power-off" style="color: red"></i>Logout</a></li>
                 </ul>
             </div>
             <!--Menu Ends Here-->
