@@ -21,9 +21,13 @@
             <button type="submit" name="submit" class="btn-secondary">
                 Login
             </button>
+            <button type="button" id="signin" class="btn-primary">
+                Signup
+            </button><br>
             <a href="#">Forgot Password</a>
         </form>
     </div>
+    <script src="js/signin.js"></script>
 </body>
 </html>
 

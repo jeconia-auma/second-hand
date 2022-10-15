@@ -27,11 +27,16 @@
             <label>Confirm Password</label>
             <input type="password" name="conf_password" placeholder="Confirm Password" minlength='8' required>
             <button type="submit" name="submit" class="btn-secondary">
-                Submit
+                Sign Up
             </button>
+            <br><br>
+            <button type="button" id="login" class="btn-primary">
+                Already have an account? Click Here!
+            </button><br>
             <a href="#">Forgot Password</a>
         </form>
     </div>
+    <script src="js/login.js"></script>
 </body>
 </html>
 
