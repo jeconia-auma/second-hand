@@ -44,7 +44,7 @@
 
 <?php
     if(isset($_POST['submit'])){
-        $title = $_POST['title'];
+        $title = strtoupper($_POST['title']);
         $image_names = $_FILES['image']['name'];
         $ext = strtolower(pathinfo($image_names, PATHINFO_EXTENSION));
         

@@ -20,7 +20,7 @@
                 <li><a href="manage-category.php">Category</a></li>
                 <li><a href="manage-books.php">Books</a></li>
                 <li><a href="manage-orders.php">Order</a></li>
-                <li><a href="admin-logout.php">Logout</a></li>
+                <li><a href="admin-logout.php"><i class="fa-solid fa-power-off"></i>Logout</a></li>
             </ul>
         </div>
     </div>

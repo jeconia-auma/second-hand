@@ -4,9 +4,10 @@
     //Get all the contents of the form
     if(isset($_POST['submit'])){
         $book_id = $_POST['book_id'];
+        $price = $_POST['price'];
         $qty = $_POST['quantity'];
         $cart_id = $_POST['cart_id'];
-        $amount = $_POST['amount'] * $qty;
+        $amount = $price * $qty;
 
         $sql = "UPDATE cart SET
             qty = $qty,

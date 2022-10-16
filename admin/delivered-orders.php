@@ -1,10 +1,13 @@
-<?php include('partials/menu.php'); ?>
+<?php
+    include('partials/menu.php');
+    include('../config/constants.php');
+?>
+
 
 <div class="container">
     <div class="wrapper">
-        <h1>Manage Orders</h1>
+        <h1>Delivered Orders</h1>
         <br><br>
-        <a href="<?php echo SITEURL; ?>admin/delivered-orders.php" class="btn-primary">View Delivered Orders</a>
         <?php
             if(isset($_SESSION['approved'])){
                 echo $_SESSION['approved'];
@@ -21,7 +24,6 @@
                 unset($_SESSION['denied']);
             }
         ?>
-        
         <table class="tbl-100">
             <tr>
                 <th>S.N</th>
@@ -30,16 +32,16 @@
                 <th>Qty</th>
                 <th>Amount</th>
                 <th>Order Date</th>
+                <th>Date Delivered</th>
                 <th>Status</th>
                 <th>Customer Name</th>
                 <th>Mobile</th>
                 <th>Email</th>
                 <th>Address</th>
-                <th>Action</th>
             </tr>
             <?php
                     //Get all the orders from database
-                    $sql = "SELECT * FROM book_order WHERE purchase_status != 'delivered'";
+                    $sql = "SELECT * FROM book_order WHERE purchase_status = 'delivered'";
                     $res = mysqli_query($conn, $sql);
                     //create serial number
                     $sn = 1;
@@ -54,6 +56,7 @@
                                 $qty = $row['qty'];
                                 $amount = $row['amount'];
                                 $order_date = $row['order_date'];
+                                $delivery_date = $row['delivery_date'];
                                 $status = $row['purchase_status'];
                                 
                                 //get the user data
@@ -93,30 +96,22 @@
                                     <td><?php echo $qty; ?></td>
                                     <td><?php echo $amount; ?></td>
                                     <td><?php echo $order_date; ?></td>
+                                    <td><?php echo $delivery_date; ?></td>
                                     <?php
-                                        if($status == 'ordered'){
-                                            echo "<td class='error'>$status</td>";
-                                        }elseif($status == 'approved'){
+                                        if($status == 'delivered'){
                                             echo "<td class='success'>$status</td>";
-                                        }else{
-                                            echo "<td class='error'>$status</td>";
                                         }
                                     ?>
                                     <td><?php echo $full_name; ?></td>
-                                    <td><?php echo $user_id; ?></td>
+                                    <td><?php echo $mobile; ?></td>
                                     <td><?php echo $email; ?></td>
                                     <td>Nairobi, Kwawangware, stage2 1200</td>
-                                    <td>
-                                        <a href="<?php echo SITEURL; ?>admin/deny-order.php?id=<?php echo $order_id; ?>" class="btn-danger" title="Deny"><i class="fa-solid fa-xmark"></i></a>
-                                        <a href="<?php echo SITEURL; ?>admin/approve-order.php?id=<?php echo $order_id; ?>" class="btn-secondary" title="Approve"><i class="fa-solid fa-check"></i></a>
-                                        <a href="<?php echo SITEURL; ?>admin/deliver-book.php?id=<?php echo $order_id; ?>" class="btn-primary" title="Delivered" style="margin-top: 1px;"><i class="fa-solid fa-tags"></i></a>
-                                    </td>
                                 </tr>
                                 <?php
                             }
                         }else{
                             ?>
-                                <td class='error'>No orderd or approved orders</td>
+                                <td class='error'>No Delivered Orders</td>
                             <?php
                         }
                     }
@@ -124,5 +119,5 @@
         </table>
     </div>
 </div>
-<script src="../js/app.js"></script>
+
 <?php include('partials/footer.php'); ?>

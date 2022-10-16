@@ -97,7 +97,7 @@
 
     if(isset($_POST['submit'])){
         $id = $_POST['id'];
-        $title = $_POST['title'];
+        $title = strtoupper($_POST['title']);
         $image_names = $_FILES['image']['name'];
         $ext = strtolower(pathinfo($image_names, PATHINFO_EXTENSION));
         $featured = $_POST['featured'];

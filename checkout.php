@@ -68,6 +68,7 @@
                                         <p><?php echo $book_description;?></p>
                                         <input type="number" name="quantity" placeholder="Enter quantity" value="<?php echo $qty;?>">
                                         <input type="hidden" name="book_id" value="<?php echo $book_id; ?>">
+                                        <input type="hidden" name="price" value="<?php echo $price;?>">
                                         <input type="hidden" name="cart_id" value="<?php echo $cart_id; ?>">
                                         <input type="text" name="amount" value="<?php echo $amount; ?>" disabled>
                                         <input type="submit" value="Update" class="btn-add-to-cart" name="submit">
@@ -119,7 +120,7 @@
 
                 //get all the books from cart and post them
                 while($row = mysqli_fetch_assoc($res)){
-                    echo $cart_id = $row['id'];
+                    $cart_id = $row['id'];
                     $book_id = $row['book_id'];
                     $price = $row['price'];
                     $qty = $row['qty'];

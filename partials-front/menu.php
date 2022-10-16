@@ -29,8 +29,8 @@
                     <li><a href="<?php echo SITEURL; ?>"><i class="fa-solid fa-home"></i>Home</a></li>
                     <li><a href="<?php echo SITEURL; ?>category.php">Categories</a></li>
                     <li><a href="<?php echo SITEURL; ?>books.php">Books</a></li>
-                    <li><a href="<?php echo SITEURL; ?>contacts.php">Contacts</a></li>
-                    <li><a href="<?php echo SITEURL; ?>checkout.php"><i class="fa-solid fa-shopping-cart error"></i>
+                    <!--<li><a href="<?php //echo SITEURL; ?>contacts.php">Contacts</a></li>-->
+                    <li><a href="<?php echo SITEURL; ?>checkout.php"><i class="fa-solid fa-shopping-cart success"></i>
                     <?php
                             //Check for the cart items
                             $user_id = $_SESSION['customer'];
@@ -48,8 +48,9 @@
                                 echo "Database did not execute the query";
                             }
                             ?>
-                    </a></li>
-                    <li><a href="<?php echo SITEURL; ?>logout.php"><i class="fa-solid fa-power-off" style="color: red"></i>Logout</a></li>
+                    Cart</a></li>
+                    <li><a href="<?php echo SITEURL;?>profile.php"><i class="fa-solid fa-user-secret"></i>Profile</a></li>
+                    <li><a href="<?php echo SITEURL; ?>logout.php" class="error"><i class="fa-solid fa-power-off" style="color: red"></i><span class="error">Logout</span></a></li>
                 </ul>
             </div>
             <!--Menu Ends Here-->

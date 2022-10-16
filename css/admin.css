@@ -62,7 +62,7 @@ Development Year: 2022
 }
 
 .wrapper {
-    width: 80%;
+    width: 90%;
     padding: 2%;
     margin: 0 auto;
 }
@@ -151,6 +151,7 @@ Development Year: 2022
 
 /*dashboard main section*/
 .shortcuts{
+    margin-bottom: 1%;
     width: 21%;
     display: inline-block;
     background-color: #fff;
@@ -170,13 +171,14 @@ Development Year: 2022
 }
 
 .head{
-    font-size: 1.5em;
+    /*font-size: 1.5em;*/
 }
 
 .head h4, .shortcuts h5{
     color: white;
     font-weight: bold;
 }
+
 .shortcuts h5{
     font-size: 1em;
 }
@@ -195,4 +197,11 @@ Development Year: 2022
     color: white;
 }
 
+@media only screen and (max-width: 500px){
+    .shortcuts, #revenue{
+        width: 100%;
+        display: block;
+        margin: 1%;
+    }
+}
 /*end of dashboar main section*/

@@ -1,8 +1,9 @@
 <?php
     //starting session
     session_start();
-
+    ;
     //Setting the constants
+    define("MONTH", array("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"));
     define("SITEURL", 'http://localhost/second-hand/');
     define("SERVERNAME", 'localhost');
     define("USERNAME", 'jack');

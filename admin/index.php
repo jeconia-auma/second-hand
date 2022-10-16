@@ -106,7 +106,7 @@
                 <h5 class="text-center">KSH: 
                     <?php
                         if($revenue > 0){
-                            echo money_format('%i', $revenue);
+                            echo money_format('%.2n', $revenue);
                         }else{
                             echo 0;
                         }
