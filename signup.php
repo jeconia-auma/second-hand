@@ -46,8 +46,8 @@
         $national_id = $_POST['national_id'];
         $mobile = $_POST['mobile'];
         $email = $_POST['email'];
-        $password = $_POST['password'];
-        $conf_password = $_POST['conf_password'];
+        $password = md5($_POST['password']);
+        $conf_password = md5($_POST['conf_password']);
 
         $sql = "SELECT * FROM users WHERE mobile='$mobile' OR email ='$email' OR national_id = $national_id";
         $res = mysqli_query($conn, $sql);

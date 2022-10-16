@@ -21,6 +21,14 @@
 <div class="container">
     <div class="wrapper">
         <h1>Profile</h1>
+        <?php
+            if(isset($_SESSION['no-address'])){
+                echo "<br><br>";
+                echo $_SESSION['no-address'];
+                unset($_SESSION['no-address']);
+                echo "<br><br>";
+            }
+        ?>
         <!--Update Details Section-->
         <fieldset>
             <legend>Update Details</legend>
@@ -169,6 +177,7 @@
 <?php include('partials-front/footer.php'); ?>
 
 <?php
+    //start of update user details section
     if(isset($_POST['update'])){
         $id = $_POST['id'];
         $full_name = $_POST['full_name'];
@@ -187,18 +196,21 @@
         $res = mysqli_query($conn, $sql);
 
         if($res == TRUE){
-            $_SESSION['update-user'] = "<div class='success'>Admin Updated Successfully</div>";
+            $_SESSION['update-user'] = "<div class='success'>User Updated Successfully</div>";
             ?>
                 <script>window.location.replace("profile.php");</script>
             <?php
         }
         else{
-            $_SESSION['update-user'] = "<div class='error'>Failed to Update Admin</div>";
+            $_SESSION['update-user'] = "<div class='error'>Failed to Update User</div>";
             ?>
                 <script>window.location.replace("profile.php");</script>
             <?php
         }
     }
+    //End of user update details section
+
+
 
     //change password section
     if(isset($_POST['submit_password'])){
@@ -208,7 +220,7 @@
         $confirm_password = md5($_POST['confirm_password']);
         
         //check to see if the current password is correct first
-        $test_pass = "SELECT * FROM users WHERE id=$id";
+        $test_pass = "SELECT * FROM users WHERE id=$id AND password='$password'";
         $test_pass_res = mysqli_query($conn, $test_pass);
         
         //check if the query above executed
@@ -243,18 +255,20 @@
             }
         }
     }
-?>
+    //End of change password Section
 
-<?php
+
+    
+    //Add or Update address
     if(isset($_POST['submit_address'])){
         $user_id = $_POST['user_id'];
         $address_id = $_POST['address_id'];
-        $country = $_POST['country'];
-        $town = $_POST['town'];
-        $district = $_POST['district'];
-        $ward = $_POST['ward'];
+        $country = htmlspecialchars($_POST['country']);
+        $town = htmlspecialchars($_POST['town']);
+        $district = htmlspecialchars($_POST['district']);
+        $ward = htmlspecialchars($_POST['ward']);
         $other = $_POST['other'];
-
+        
         //if the address id is available in database
         if($_POST['address_id'] != ""){
             $sql3 = "UPDATE users_addresses SET
@@ -267,14 +281,14 @@
                 WHERE id=$address_id
             ";
 
-            $res3 = mysqli_query($conn, $sql3);
+            print_r($res3 = mysqli_query($conn, $sql3));
             if($res3 == TRUE){
                 $_SESSION['update-address'] = "<div class='success'>Address Updated Successfully</div>";
                 ?>
                     <script>window.location.replace("profile.php");</script>
                 <?php
             }else{
-                $_SESSION['update-address'] = "<div class='success'>Failed to Update Address</div>";
+                $_SESSION['update-address'] = "<div class='error'>Failed to Update Address</div>".mysqli_error($conn);
                 ?>
                     <script>window.location.replace("profile.php");</script>
                 <?php
@@ -296,7 +310,7 @@
                     <script>window.location.replace("profile.php");</script>
                 <?php
             }else{
-                $_SESSION['update-address'] = "<div class='success'>Failed to add Address</div>".mysqli_error($conn);
+                $_SESSION['update-address'] = "<div class='error'>Failed to add Address</div>".mysqli_error($conn);
                 ?>
                     <script>window.location.replace("profile.php");</script>
                 <?php
@@ -304,3 +318,4 @@
         }
     }
 ?>
+<!--End of Add or Update Address Section-->

@@ -37,7 +37,7 @@
             <th>Action</th>
 
             <?php
-                $sql = "SELECT * FROM users";
+                $sql = "SELECT * FROM users WHERE user_type='admin'";
                 $res = mysqli_query($conn, $sql);
 
                 if($res == TRUE){

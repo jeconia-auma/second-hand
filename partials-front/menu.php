@@ -48,8 +48,8 @@
                                 echo "Database did not execute the query";
                             }
                             ?>
-                    Cart</a></li>
-                    <li><a href="<?php echo SITEURL;?>profile.php"><i class="fa-solid fa-user-secret"></i>Profile</a></li>
+                    <span class='success'>Cart</span></a></li>
+                    <li><a href="<?php echo SITEURL;?>profile.php"><i class="fa-solid fa-user-gear"></i>Profile</a></li>
                     <li><a href="<?php echo SITEURL; ?>logout.php" class="error"><i class="fa-solid fa-power-off" style="color: red"></i><span class="error">Logout</span></a></li>
                 </ul>
             </div>

@@ -61,7 +61,7 @@
         <!--Orders Seciton-->
         <div class="shortcuts">
             <?php
-                $sql3 = "SELECT * FROM book_order";
+                $sql3 = "SELECT * FROM book_order WHERE purchase_status != 'delivered'";
                 $res3 = mysqli_query($conn, $sql3);
                 if($res3 == TRUE){
                     $count3 = mysqli_num_rows($res3);
@@ -86,7 +86,7 @@
         <!--Revenue Seciton-->
         <div id="revenue">
             <?php
-                $sql4 = "SELECT * FROM book_order";
+                $sql4 = "SELECT * FROM book_order WHERE purchase_status = 'delivered'";
                 $res4 = mysqli_query($conn, $sql4);
                 $revenue = 0;
                 if($res4 == TRUE){

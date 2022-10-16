@@ -1,6 +1,20 @@
 <?php include("partials-front/menu.php");?>
 
 <?php
+    //check to see if address is set
+    $user_id_address = $_SESSION['customer'];
+    $address_sql = "SELECT * FROM users_addresses WHERE user_id = $user_id_address";
+    $addres_res = mysqli_query($conn, $address_sql);
+    if($addres_res == TRUE){
+        $address_count = mysqli_num_rows($addres_res);
+        if($address_count == 0){
+            $_SESSION['no-address'] = "<div class='error'>Address don't exist</div>".mysqli_error($conn);
+            ?>
+                <script>window.location.replace("profile.php");</script>
+            <?php
+        }
+    }
+
     if(isset($_SESSION['update-cart'])){
         echo $_SESSION['update-cart'];
         unset($_SESSION['update-cart']);
@@ -16,7 +30,7 @@
         unset($_SESSION['book-order']);
     }
 ?>
-
+<!--Print books in cart-->
 <div class="container">
     <div class="wrapper">
         <h1>Checkout</h1>
@@ -66,7 +80,7 @@
                                         <h5>Title: <?php echo $book_title;?></h5>
                                         <h5>Author: <?php echo $book_author;?></h5>
                                         <p><?php echo $book_description;?></p>
-                                        <input type="number" name="quantity" placeholder="Enter quantity" value="<?php echo $qty;?>">
+                                        <input type="number" name="quantity" placeholder="Enter quantity" min="1" value="<?php echo $qty;?>">
                                         <input type="hidden" name="book_id" value="<?php echo $book_id; ?>">
                                         <input type="hidden" name="price" value="<?php echo $price;?>">
                                         <input type="hidden" name="cart_id" value="<?php echo $cart_id; ?>">
@@ -85,6 +99,7 @@
                 echo "<div class='error'>Query was not Executed</div>";
             }
         ?>
+        <!--Check for items in the cart-->
         <form action="" method="post">
             <?php
                 //check there is item in the checkout section
