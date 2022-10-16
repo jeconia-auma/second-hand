@@ -21,6 +21,7 @@
 <div class="container">
     <div class="wrapper">
         <h1>Profile</h1>
+        <!--Update Details Section-->
         <fieldset>
             <legend>Update Details</legend>
             <?php
@@ -58,8 +59,29 @@
                 </table>
             </form>
         </fieldset>
+        <!--End of Update Details Section-->
 
+        <!--Address Details Section-->
         <fieldset>
+            <?php
+                //get the address details
+                $user_id = $id;
+                $address_sql = "SELECT * FROM `users_addresses` WHERE user_id=$user_id";
+                $address_res = mysqli_query($conn, $address_sql);
+
+                if($address_res == TRUE){
+                    $address_count = mysqli_num_rows($address_res);
+                    if($address_count == 1){
+                        $address_row = mysqli_fetch_assoc($address_res);
+                        $address_id = $address_row['id'];
+                        $country = $address_row['country'];
+                        $town = $address_row['town'];
+                        $district = $address_row['district'];
+                        $ward = $address_row['ward'];
+                        $other = $address_row['other_details'];
+                    }
+                }
+            ?>
             <legend>Address</legend>
             <?php
                 if(isset($_SESSION['update-address'])){
@@ -67,36 +89,45 @@
                     unset($_SESSION['update-address']);
                 }
             ?>
+
             <form action="" method="post">
                 <table class="tbl-50">
                     <tr>
                         <td>Country</td>
-                        <td><input type="text" name="full_name" value="<?php echo $full_name?>"></td>
+                        <td><input type="text" name="country" value="<?php echo $country?>" required></td>
                     </tr>
     
                     <tr>
-                        <td>National Id</td>
-                        <td><input type="number" name="national_id" minlength="10" value="<?php echo $national_id?>"></td>
+                        <td>Town</td>
+                        <td><input type="text" name="town" value="<?php echo $town?>" required></td>
                     </tr>
                     
                     <tr>
-                        <td>Mobile</td>
-                        <td><input type="tel" name="mobile" minlength="10" value="<?php echo $mobile?>"></td>
+                        <td>District</td>
+                        <td><input type="text" name="district" value="<?php echo $district?>" required></td>
                     </tr>
     
                     <tr>
-                        <td>Email</td>
-                        <td><input type="text" name="email" value="<?php echo $email?>"></td>
+                        <td>Ward</td>
+                        <td><input type="text" name="ward" value="<?php echo $ward?>" required></td>
+                    </tr>
+
+                    <tr>
+                        <td>Other</td>
+                        <td><textarea name="other" cols="30" rows="5" required><?php echo $other; ?></textarea></td>
                     </tr>
     
                     <tr>
-                        <td><input type="submit" name="update" value="Update Profile" class="btn-secondary"></td>
-                        <input type="hidden" name="id" value="<?php echo $id?>">
+                        <input type="hidden" name="user_id" value="<?php echo $id?>">
+                        <td><input type="hidden" name="address_id" value="<?php echo $address_id; ?>"></td>
+                        <td><input type="submit" name="submit_address" value="Update address" class="btn-secondary"></td>
                     </tr>
                 </table>
             </form>
         </fieldset>
+        <!--End of Address Details Section-->
         
+        <!--Change Password Section-->
         <fieldset>
             <?php
                 if(isset($_SESSION['change-pass'])){
@@ -131,6 +162,7 @@
                 </table>
             </form>
         </fieldset>
+        <!--Change Password Section-->
 
     </div>
 </div>
@@ -205,6 +237,66 @@
                 }
             }else{
                 $_SESSION['change-pass'] = "<div class='error'>Failed! Current Password is incorrect</div>";
+                ?>
+                    <script>window.location.replace("profile.php");</script>
+                <?php
+            }
+        }
+    }
+?>
+
+<?php
+    if(isset($_POST['submit_address'])){
+        $user_id = $_POST['user_id'];
+        $address_id = $_POST['address_id'];
+        $country = $_POST['country'];
+        $town = $_POST['town'];
+        $district = $_POST['district'];
+        $ward = $_POST['ward'];
+        $other = $_POST['other'];
+
+        //if the address id is available in database
+        if($_POST['address_id'] != ""){
+            $sql3 = "UPDATE users_addresses SET
+                user_id = $user_id,
+                country = '$country',
+                town = '$town',
+                district = '$district',
+                ward = '$ward',
+                other_details = '$other'
+                WHERE id=$address_id
+            ";
+
+            $res3 = mysqli_query($conn, $sql3);
+            if($res3 == TRUE){
+                $_SESSION['update-address'] = "<div class='success'>Address Updated Successfully</div>";
+                ?>
+                    <script>window.location.replace("profile.php");</script>
+                <?php
+            }else{
+                $_SESSION['update-address'] = "<div class='success'>Failed to Update Address</div>";
+                ?>
+                    <script>window.location.replace("profile.php");</script>
+                <?php
+            }
+        }else{
+            $sql4 = "INSERT INTO users_addresses SET
+                user_id = $user_id,
+                country = '$country',
+                town = '$town',
+                district = '$district',
+                ward = '$ward',
+                other_details = '$other'
+            ";
+
+            $res4 = mysqli_query($conn, $sql4);
+            if($res4 == TRUE){
+                $_SESSION['update-address'] = "<div class='success'>Address Added Successfully</div>";
+                ?>
+                    <script>window.location.replace("profile.php");</script>
+                <?php
+            }else{
+                $_SESSION['update-address'] = "<div class='success'>Failed to add Address</div>".mysqli_error($conn);
                 ?>
                     <script>window.location.replace("profile.php");</script>
                 <?php
