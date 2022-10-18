@@ -38,6 +38,7 @@
                 <th>Mobile</th>
                 <th>Email</th>
                 <th>Address</th>
+                <th>Action</th>
             </tr>
             <?php
                     //Get all the orders from database
@@ -86,7 +87,7 @@
                                     $district = $row['district'];
                                     $ward = $row['ward'];
                                     $other = $row['other_details'];
-                                    $address = $town + ", " + $district + ", " + $ward + ", " + $other;
+                                    $address = $town.", ".$district.", ".$ward.", ".$other;
                                 }
                                 ?>
                                 <tr>
@@ -105,7 +106,8 @@
                                     <td><?php echo $full_name; ?></td>
                                     <td><?php echo $mobile; ?></td>
                                     <td><?php echo $email; ?></td>
-                                    <td>Nairobi, Kwawangware, stage2 1200</td>
+                                    <td><?php echo $address; ?></td>
+                                    <td><a href="<?php echo SITEURL; ?>admin/create_invoice.php?id=<?php echo $user_id; ?>&dates=<?php echo $delivery_date; ?>" class="btn-primary"><i class="fa-solid fa-print"></i></a></td>
                                 </tr>
                                 <?php
                             }

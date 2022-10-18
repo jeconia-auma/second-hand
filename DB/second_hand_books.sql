@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Oct 16, 2022 at 04:37 PM
+-- Generation Time: Oct 18, 2022 at 10:25 AM
 -- Server version: 10.5.15-MariaDB-0+deb11u1
 -- PHP Version: 7.4.30
 
@@ -26,6 +26,8 @@ SET time_zone = "+00:00";
 --
 -- Table structure for table `books`
 --
+CREATE DATABASE `second_hand_books`;
+USE `second_hand_books`;
 
 CREATE TABLE `books` (
   `id` int(11) NOT NULL,
@@ -80,8 +82,12 @@ INSERT INTO `book_order` (`id`, `user_id`, `book_id`, `price`, `qty`, `amount`, 
 (120037, 1247, 10009, '1000.00', 1, '1000.00', 'Sun Oct 16 2022', 'Sun 16 Oct 2022', 'delivered'),
 (120038, 1247, 10009, '1000.00', 3, '3000.00', 'Sun Oct 16 2022', 'Sun 16 Oct 2022', 'delivered'),
 (120039, 1256, 10009, '1000.00', 2, '2000.00', 'Sun Oct 16 2022', 'Sun 16 Oct 2022', 'delivered'),
-(120040, 1257, 10007, '800.00', 1, '800.00', 'Sun Oct 16 2022', '', 'ordered'),
-(120041, 1257, 10008, '850.00', 1, '850.00', 'Sun Oct 16 2022', '', 'ordered');
+(120040, 1257, 10007, '800.00', 1, '800.00', 'Sun Oct 16 2022', 'Tue 18 Oct 2022', 'delivered'),
+(120041, 1257, 10008, '850.00', 1, '850.00', 'Sun Oct 16 2022', 'Tue 18 Oct 2022', 'delivered'),
+(120042, 1247, 10008, '850.00', 1, '850.00', 'Tue Oct 18 2022', 'Tue 18 Oct 2022', 'delivered'),
+(120043, 1247, 10007, '800.00', 1, '800.00', 'Tue Oct 18 2022', 'Tue 18 Oct 2022', 'delivered'),
+(120044, 1257, 10009, '1000.00', 1, '1000.00', 'Tue Oct 18 2022', 'Tue 18 Oct 2022', 'delivered'),
+(120045, 1257, 10007, '800.00', 1, '800.00', 'Tue Oct 18 2022', 'Tue 18 Oct 2022', 'delivered');
 
 -- --------------------------------------------------------
 
@@ -230,13 +236,13 @@ ALTER TABLE `books`
 -- AUTO_INCREMENT for table `book_order`
 --
 ALTER TABLE `book_order`
-  MODIFY `id` int(22) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=120042;
+  MODIFY `id` int(22) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=120046;
 
 --
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 
 --
 -- AUTO_INCREMENT for table `category`

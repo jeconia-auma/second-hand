@@ -172,6 +172,43 @@
         </fieldset>
         <!--Change Password Section-->
 
+        <fieldset>
+            <legend>Invoices</legend>
+            <h2 class="text-center">Invoices</h2>
+            <table class="tbl-100">
+                <tr>
+                    <th>Date</th>
+                    <th>Action</th>
+                </tr>
+                <?php
+                    //get all the invoice dates
+                    $sql6 = "SELECT DISTINCT delivery_date FROM book_order WHERE user_id=$user_id";
+                    $res6 = mysqli_query($conn, $sql6);
+
+                    if($res6 == TRUE){
+                        $count6 = mysqli_num_rows($res6);
+                        if($count6 > 0){
+                            while($row6 = mysqli_fetch_assoc($res6)){
+                                $dates = $row6["delivery_date"];
+                                ?>
+                                    <tr>
+                                        <td><?php echo $dates; ?></td>
+                                        <td><a href="create_invoice.php?id=<?php echo $user_id;?>&dates=<?php echo $dates; ?>" class="btn-primary" target="_blank">Print Invoice</a></td>
+                                    </tr>
+                                <?php
+                            }
+                        }else{
+                            ?>
+                                <td class="error">You haven't purchased anything</td>
+                            <?php
+                        }
+                    }else{
+                        echo mysqli_error($conn);
+                    }
+                ?>
+            </table>
+        </fieldset>
+
     </div>
 </div>
 <?php include('partials-front/footer.php'); ?>
